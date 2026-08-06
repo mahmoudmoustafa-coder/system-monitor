@@ -43,7 +43,16 @@ uptime_info() {
 	uptime
 }
 
+logged_users() {
 
+	echo "==== Logged Users ===="
+	
+	who 
+
+	echo
+	echo "Total Users: $(who | wc -l)"
+
+}
 
 while true 
 do
@@ -80,7 +89,7 @@ do
 			uptime_info
 			;;
 		5)
-			echo "users"
+			logged_users
 			;;
 		6)
 			echo "info"
