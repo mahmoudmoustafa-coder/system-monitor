@@ -1,6 +1,44 @@
 #!/bin/bash
 
 
+cpu_usage() {
+
+    idle=$(top -bn1 | grep "%Cpu" | awk '{print $8}')
+
+    usage=$(awk "BEGIN {print 100-$idle}")
+
+    echo "CPU Usage: $usage %"
+
+}
+
+memory_usage() {
+
+	total=$( free -h | grep Mem | awk '{print $2}' )
+	used=$( free -h | grep Mem | awk '{print $3}' )
+	free=$( free -h | grep Mem | awk '{print $4}' )
+
+	echo "Total Memory : $total"
+	echo "Used Memory : $used"
+	echo "Free Memory : $free"
+}
+
+
+disk_usage() {
+
+	size=$( df -h / | awk 'NR==2 {print $2}' )
+	usage=$( df -h / | awk 'NR==2 {print $3}' )
+	available=$( df -h / | awk 'NR==2 {print $4}' )
+	percentage=$( df -h / | awk 'NR==2 {print $5}' )
+
+	echo "Disk Size       : $size"
+	echo "Used space      : $used"
+	echo "Available Space : $available"
+	echo "Usage           : $percentage"
+
+}
+
+
+
 while true 
 do
 	clear
@@ -24,13 +62,13 @@ do
 	case $choise in 
 
 		1)
-			echo "cpu"
+			cpu_usage
 			;;
 		2)
-			echo "memory"
+			memory_usage
 			;;
 		3)
-			echo "disk"
+			disk_usage
 			;;
 		4) 
 			echo "uptime"
@@ -42,7 +80,8 @@ do
 			echo "info"
 			;;
 		7)
-			echo "exit"
+			echo "Goodbye!"
+			exit
 			;;
 		*)
 			echo "Invalid choise"
