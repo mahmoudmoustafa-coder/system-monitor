@@ -37,6 +37,12 @@ disk_usage() {
 
 }
 
+uptime_info() {
+
+	echo "==== System Uptime ===="
+	uptime
+}
+
 
 
 while true 
@@ -71,7 +77,7 @@ do
 			disk_usage
 			;;
 		4) 
-			echo "uptime"
+			uptime_info
 			;;
 		5)
 			echo "users"
