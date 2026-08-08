@@ -83,9 +83,9 @@ do
     	echo "7) Exit"
     	echo
 
-	read -p "Choose: " choise
+	read -p "Choose: " choice
 
-	case $choise in 
+	case $choice in 
 
 		1)
 			cpu_usage
@@ -110,7 +110,7 @@ do
 			exit
 			;;
 		*)
-			echo "Invalid choise"
+			echo "Invalid choice"
 			;;
 	esac
 
