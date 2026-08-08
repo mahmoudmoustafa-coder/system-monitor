@@ -31,7 +31,7 @@ disk_usage() {
 	percentage=$( df -h / | awk 'NR==2 {print $5}' )
 
 	echo "Disk Size       : $size"
-	echo "Used space      : $usage"
+	echo "Used space      : $used"
 	echo "Available Space : $available"
 	echo "Usage           : $percentage"
 
@@ -53,17 +53,6 @@ logged_users() {
 	echo "Total Users: $(who | wc -l)"
 
 }
-
-system_info() {
-
-	echo "Hostname     : $(hostname)"
-	echo "OS           : $(uname)"
-	echo "Kernel       : $(uname -r)"
-	echo "Architecture : $(uname -m)"
-	echo "CPU          : $(lscpu | grep -i "model name" | awk -F: '{print $2}' | xargs)"
-
-}
-
 
 while true 
 do
@@ -103,7 +92,7 @@ do
 			logged_users
 			;;
 		6)
-			system_info
+			echo "info"
 			;;
 		7)
 			echo "Goodbye!"
